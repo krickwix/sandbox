@@ -11,5 +11,6 @@ pipeline {
                     host: 'http://10.60.16.240:9199',
                     includes: 'dummyfile'
             }
+        }
     }
 }
