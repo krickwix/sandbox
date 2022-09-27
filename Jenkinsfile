@@ -1,14 +1,3 @@
-@Library(['srePipeline', 'alcor-jenkins']) _
-
-def params = [
-  vault: [
-    namespace: "eticloud/jenkins",
-  ],
-  region: [
-    deploymentType: "dev"
-  ],
-]
-
 pipeline {
     agent {
         docker { image 'docker.io/krickwix/ybuild:v0.3' }
@@ -23,8 +12,7 @@ pipeline {
                 sh '''
                     apt-get -y install awscli && 
                     aws s3 cp dummyfile 's3://cisco-eti-gbear-scratch/test/dummyfile'
-                    '''
-                }
+                '''
             }
         }
     }
