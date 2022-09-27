@@ -12,7 +12,6 @@ pipeline {
         stage("artefacts") {
             steps {
                 sh '''
-                    apt-get -y install awscli && 
                     aws s3 cp dummyfile 's3://cisco-eti-gbear-scratch/test/dummyfile'
                 '''
             }
