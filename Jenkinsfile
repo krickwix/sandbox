@@ -20,8 +20,10 @@ pipeline {
     stages {
         stage("artefacts") {
             steps {
-                awsLogin(params, roleName="jenkins-s3-full-access") {
+                sh '''
+                    apt-get -y install awscli && 
                     aws s3 cp dummyfile 's3://cisco-eti-gbear-scratch/test/dummyfile'
+                    '''
                 }
             }
         }
