@@ -11,9 +11,16 @@ pipeline {
     stages {
         stage("artefacts") {
             steps {
-                sh '''
-                    aws s3 cp dummyfile 's3://cisco-eti-gbear-scratch/test/dummyfile'
-                '''
+                withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: "gbear-aws-eticloud-credentials",
+                        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    sh '''
+                        aws s3 cp dummyfile 's3://cisco-eti-gbear-scratch/test/dummyfile'
+                    '''
+                }
             }
         }
     }
