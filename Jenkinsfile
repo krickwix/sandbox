@@ -21,7 +21,7 @@ pipeline {
         stage("artefacts") {
             steps {
                 awsLogin(params, roleName="jenkins-s3-full-access") {
-                    aws s3 cp dummyfile s3://cisco-eti-gbear-scratch/test/dummyfile
+                    aws s3 cp dummyfile 's3://cisco-eti-gbear-scratch/test/dummyfile'
                 }
             }
         }
