@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'docker.io/krickwix/ybuild:v0.3' }
+        docker { image 'docker.io/krickwix/ybuild:v0.4' }
 		label 'great-bear-yocto-large'
     }
     environment {
