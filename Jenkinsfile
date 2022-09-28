@@ -18,7 +18,8 @@ pipeline {
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     sh '''
-                        aws s3 cp dummyfile 's3://cisco-eti-gbear-scratch/test/dummyfile'
+                        cp dummyfile dummyfile.${env.GIT_COMMIT}
+                        aws s3 cp dummyfile.${env.GIT_COMMIT} 's3://cisco-eti-gbear-scratch/test/dummyfile.${env.GIT_COMMIT}'
                     '''
                 }
             }
