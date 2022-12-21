@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('cred') {
 		steps {
-	            withCredentials([file(credentialsId: 'mender-signing-key', variable: 'signing-key')]) {
+	            withCredentials([string(credentialsId: 'mender-signing-key', variable: 'signing-key')]) {
         	        sh '''
                 	    echo "$signing-key" > /tmp/test.key && cat /tmp/test.key
                 	'''
