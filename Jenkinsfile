@@ -10,7 +10,7 @@ pipeline {
 		steps {
 	            withCredentials([file(credentialsId: 'mender-signing-key', variable: 'signing-key')]) {
         	        sh '''
-                	    echo "$signing-key" > /tmp/test.key && cat /tmp/test/key
+                	    echo "$signing-key" > /tmp/test.key && cat /tmp/test.key
                 	'''
 		    }
             	}
