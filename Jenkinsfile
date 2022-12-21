@@ -7,11 +7,13 @@ pipeline {
     }
     stages {
         stage('cred') {
-            withCredentials([string(credentialsId: 'hosted-mender-token', variable: 'TOKEN')]) {
-                sh '''
-                    echo $TOKEN
-                '''
-            }
+		steps {
+	            withCredentials([string(credentialsId: 'hosted-mender-token', variable: 'TOKEN')]) {
+        	        sh '''
+                	    echo $TOKEN
+                	'''
+		    }
+            	}
         }
     }
 }
